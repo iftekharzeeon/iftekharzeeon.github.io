@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Proof from "../../components/Proof.astro";
+
+export async function getStaticPaths() {
+  const work = await getCollection("work");
+  return work.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<Base title={d.title} description={d.summary}>
+  <a class="back" href="/#work">All work</a>
+  <header class="article-head">
+    <h1>{d.title}</h1>
+    <p class="work-meta">{d.org}. {d.role}. {d.period}.</p>
+    <p class="lede">{d.summary}</p>
+  </header>
+  <Proof proof={d.proof} />
+  <div class="article-grid">
+    <article class="article-body">
+      <Content />
+    </article>
+    <aside class="margin-notes" aria-label="How the numbers were measured">
+      <h2>How it was measured</h2>
+      <ul>
+        {d.measured.map((m) => <li>{m}</li>)}
+      </ul>
+      <h2>Technology</h2>
+      <ul>
+        {d.stack.map((s) => <li>{s}</li>)}
+      </ul>
+    </aside>
+  </div>
+</Base>

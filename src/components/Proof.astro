@@ -1,0 +1,32 @@
+---
+import Tick from "./Tick.astro";
+interface Props {
+  proof: {
+    kind: "improve" | "agree" | "single";
+    label: string;
+    before: string;
+    beforeLabel: string;
+    after: string;
+    afterLabel: string;
+    note: string;
+  };
+}
+const { proof } = Astro.props;
+const improve = proof.kind === "improve";
+---
+<section class="proof-block" aria-label="Main result">
+  <div class="label">{proof.label}</div>
+  <p class="values">
+    {proof.kind !== "single" && (
+      <span>
+        <span class:list={[improve && "before"]}>{proof.before}</span>
+        <span class="to">{proof.beforeLabel}</span>
+      </span>
+    )}
+    <span>
+      <span class="after">{proof.after}</span>
+      <span class="to">{proof.afterLabel}</span>
+    </span>
+  </p>
+  <div class="note"><Tick />{proof.note}</div>
+</section>

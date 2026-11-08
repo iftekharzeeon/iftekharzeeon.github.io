@@ -1,0 +1,207 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Tick from "../components/Tick.astro";
+
+const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
+const notes = (await getCollection("notes")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+
+const jobs = [
+  {
+    org: "Retune AI Inc",
+    role: "Software engineer, remote (USA)",
+    dates: "Sep 2023 – present",
+    points: [
+      "Built the hybrid BM25 and vector search behind retune.so. Retrieval improved by 40%, and the product made USD 700K+ in its first 2 months on AppSumo.",
+      "Built awaken.is, an AI coaching product with 78% retention across 500+ users, and the AlterCall Virtual Coach.",
+      "Run production and security for TELE's multilingual WordPress site on GCP. Built a Microsoft Graph tool that turned 2,495 emails into 120 tracked actions.",
+    ],
+  },
+  {
+    org: "Pridesys IT Ltd",
+    role: "Software engineer, Dhaka",
+    dates: "Nov 2023 – present",
+    points: [
+      "Led a team of 11 to ship a multi-tenant SaaS accounting product on Azure for small businesses in Bangladesh, with a tenant-isolated database at 200 TPS.",
+      "Run production database performance for Farmers Card, the national farmer registry of 1,873,505 farmers.",
+      "Lead the rebuild of a 7,143-screen Oracle ERP on Spring Boot and PostgreSQL.",
+    ],
+  },
+  {
+    org: "VIPB Asset Management",
+    role: "Software engineer, contract, Dhaka",
+    dates: "May 2026 – Nov 2026",
+    points: [
+      "Sole developer. Moved the investor platform from MongoDB to PostgreSQL, and the daily fund accounting for 6 funds from Excel into the app.",
+    ],
+  },
+  {
+    org: "BYDO Academy",
+    role: "Junior software engineer, remote",
+    dates: "Sep 2020 – Sep 2021",
+    points: ["Built the SSLCommerz payment gateway, which handled 300+ requests a day, and the site's REST API."],
+  },
+];
+
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+---
+
+<Base>
+  <section class="hero" aria-labelledby="who">
+    <img class="portrait" src="/zeeon.jpg" width="160" height="160" alt="Iftekhar E Mahbub Zeeon" />
+    <div>
+      <h1 id="who">Iftekhar E Mahbub Zeeon</h1>
+      <p class="where">Software engineer in Dhaka, Bangladesh</p>
+      <p class="lede">
+        I build and run systems where a wrong number costs real money: fund accounting, a national farmer
+        registry, and ERP payroll.
+      </p>
+      <p class="quiet prose">
+        Most of my work is backend and data: PostgreSQL, Spring Boot, TypeScript and Kubernetes. I like problems where
+        the answer can be checked.
+      </p>
+    </div>
+  </section>
+
+  <div class="ledger">
+    <table>
+      <caption>Three checks from 2026. Each line links to the full story.</caption>
+      <thead>
+        <tr>
+          <th scope="col">What I checked</th>
+          <th scope="col" class="num">Against</th>
+          <th scope="col" class="num">My result</th>
+          <th scope="col"><span class="skip-label">Outcome</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><a href="/work/vipb-fund-accounting/">Growth Fund NAV per unit, 28 Sep</a></th>
+          <td class="num" data-label="Against">13.094528</td>
+          <td class="num after" data-label="My result">13.094301</td>
+          <td class="check"><Tick />Both publish as 13.09</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="/work/farmers-card-database/">Slowest farmer-registry update</a></th>
+          <td class="num before" data-label="Against">60,668 ms</td>
+          <td class="num after" data-label="My result">1.7 ms</td>
+          <td class="check"><Tick />On production, 30 Sep</td>
+        </tr>
+        <tr>
+          <th scope="row"><a href="/work/pridesys-erp-rebuild/">ERP attendance replay, rows</a></th>
+          <td class="num" data-label="Against">7,781,353</td>
+          <td class="num after" data-label="My result">7,781,343</td>
+          <td class="check"><Tick />The other 10 explained</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="section" id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <ul class="work-list">
+      {work.map((w) => (
+        <li class="work-item">
+          <h3><a href={`/work/${w.id}/`}>{w.data.title}</a></h3>
+          <p class="work-meta">{w.data.org}. {w.data.role}.</p>
+          <p class="prose">{w.data.summary}</p>
+          <p class="pair">
+            <span class="label">{w.data.proof.label}: </span>
+            {w.data.proof.kind !== "single" && (
+              <>
+                <span class:list={[w.data.proof.kind === "improve" && "before"]}>{w.data.proof.before}</span>
+                <span class="label"> {w.data.proof.kind === "improve" ? "to" : "against"} </span>
+              </>
+            )}
+            <span class="after">{w.data.proof.after}</span>
+          </p>
+          <ul class="stack" aria-label="Technology">
+            {w.data.stack.map((s) => <li>{s}</li>)}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <ol class="jobs">
+      {jobs.map((j) => (
+        <li class="job">
+          <div class="job-dates">{j.dates}</div>
+          <div>
+            <h3>{j.org}</h3>
+            <p class="job-role">{j.role}</p>
+            <ul>
+              {j.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section" id="notes" aria-labelledby="notes-h">
+    <h2 id="notes-h">Notes</h2>
+    <div>
+      <ul class="plain note-list">
+        {notes.map((n) => (
+          <li>
+            <a href={`/notes/${n.id}/`}>{n.data.title}</a>
+            <p><span class="figures">{fmt(n.data.date)}</span>. {n.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/notes/">All notes</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education and awards</h2>
+    <div class="prose">
+      <ul class="plain">
+        <li>
+          B.Sc. in Computer Science and Engineering, Bangladesh University of Engineering and Technology (BUET),
+          2019–2024. GPA 3.63 of 4.00. Dean's List in the second year.
+        </li>
+        <li>BASIS National ICT Award 2020, winner in the tertiary student project category.</li>
+        <li>Therap Java Fest 2022, finalist, top 10 of 500+ teams.</li>
+        <li>BUET CSE Fest 2022 Hackathon, API and Cloud category, first runner-up.</li>
+        <li>IEEE Computer Society BUET Student Branch Chapter, Vice Chairperson (Technical), 2023–2024.</li>
+      </ul>
+      <p class="quiet">
+        Student projects: Trip-Tix, a bus ticketing platform on Node.js and PostgreSQL. The Great Ink Society, a
+        platform for writers and readers on Spring Boot. A real-time 911 emergency portal on Node.js and WebSocket.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
+    <div class="prose">
+      <p>
+        Email is the best way to reach me: <a href="mailto:mahbubzeeon@gmail.com">mahbubzeeon@gmail.com</a>.
+      </p>
+      <ul class="contact-links">
+        <li><a href="https://github.com/iftekharzeeon">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/iftekhar-zeeon">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .skip-label {
+    position: absolute;
+    left: -999px;
+  }
+  @media (min-width: 40rem) {
+    .hero {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 2rem;
+    }
+    .hero .portrait {
+      margin-top: 0.6rem;
+    }
+  }
+</style>

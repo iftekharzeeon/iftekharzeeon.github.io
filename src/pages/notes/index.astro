@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+const notes = (await getCollection("notes")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+---
+
+<Base title="Notes" description="Short write-ups of production problems: what broke, how I measured it, and what fixed it.">
+  <header class="article-head">
+    <h1>Notes</h1>
+    <p class="lede">Short write-ups of production problems: what broke, how I measured it, and what fixed it.</p>
+  </header>
+  <ul class="plain note-list" style="margin-top: 2.5rem; max-width: 40rem;">
+    {notes.map((n) => (
+      <li>
+        <a href={`/notes/${n.id}/`}>{n.data.title}</a>
+        <p><span class="figures">{fmt(n.data.date)}</span>. {n.data.summary}</p>
+      </li>
+    ))}
+  </ul>
+</Base>

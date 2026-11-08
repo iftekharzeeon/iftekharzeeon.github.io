@@ -1,0 +1,97 @@
+---
+import "@fontsource-variable/newsreader/wght.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-400.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-500.css";
+import "@fontsource/ibm-plex-sans-condensed/latin-600.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const site = "Iftekhar E Mahbub Zeeon";
+const { title, description = "Software engineer in Dhaka. I build and run systems where a wrong number costs real money." } = Astro.props;
+const fullTitle = title ? `${title} | ${site}` : `${site}, software engineer`;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  { href: "/#work", label: "Work" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/notes/", label: "Notes" },
+  { href: "/now/", label: "Now" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f2f4ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151b20" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem("theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="frame">
+      <header class="site-head">
+        <a class="home" href="/">Zeeon</a>
+        <nav aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path === item.href.replace(/\/$/, "") ? "page" : undefined}>{item.label}</a>
+          ))}
+          <button class="theme-toggle" type="button" aria-label="Switch colour theme">Theme</button>
+        </nav>
+      </header>
+      <main id="content">
+        <slot />
+      </main>
+      <footer class="site-foot">
+        <span>Iftekhar E Mahbub Zeeon, Dhaka</span>
+        <span>
+          <a href="mailto:mahbubzeeon@gmail.com">mahbubzeeon@gmail.com</a>
+        </span>
+      </footer>
+    </div>
+    <script is:inline>
+      (function () {
+        const btn = document.querySelector(".theme-toggle");
+        if (!btn) return;
+        const root = document.documentElement;
+        const current = () =>
+          root.dataset.theme ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const label = () => {
+          const next = current() === "dark" ? "light" : "dark";
+          btn.textContent = next === "dark" ? "Dark" : "Light";
+          btn.setAttribute("aria-label", "Use the " + next + " theme");
+        };
+        label();
+        btn.addEventListener("click", function () {
+          const next = current() === "dark" ? "light" : "dark";
+          root.dataset.theme = next;
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          label();
+        });
+      })();
+    </script>
+  </body>
+</html>
