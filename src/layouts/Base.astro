@@ -11,15 +11,16 @@ interface Props {
 }
 
 const site = "Iftekhar E Mahbub Zeeon";
-const { title, description = "Software engineer in Dhaka. I build and run systems where a wrong number costs real money." } = Astro.props;
-const fullTitle = title ? `${title} | ${site}` : `${site}, software engineer`;
+const { title, description = "Full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd." } = Astro.props;
+const fullTitle = title ? `${title} | ${site}` : `${site}, full-stack software engineer`;
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const nav = [
   { href: "/#work", label: "Work" },
+  { href: "/projects/", label: "Projects" },
+  { href: "/research/", label: "Research" },
   { href: "/#experience", label: "Experience" },
   { href: "/notes/", label: "Notes" },
-  { href: "/now/", label: "Now" },
 ];
 ---
 
@@ -65,7 +66,8 @@ const nav = [
       <footer class="site-foot">
         <span>Iftekhar E Mahbub Zeeon, Dhaka</span>
         <span>
-          <a href="mailto:mahbubzeeon@gmail.com">mahbubzeeon@gmail.com</a>
+          <a href="mailto:mahbubzeeon@gmail.com">mahbubzeeon@gmail.com</a></span>
+        <span><a href="/now/">What I am doing now</a>
         </span>
       </footer>
     </div>

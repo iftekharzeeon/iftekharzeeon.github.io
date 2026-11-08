@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Research" description="BTVSL, a sentence-level dataset for Bangla Sign Language translation, published at IEEE FG 2024.">
+  <header class="article-head">
+    <h1>Research</h1>
+    <p class="lede">My research so far is on Bangla Sign Language. It started as my undergraduate thesis at BUET.</p>
+  </header>
+
+  <section class="section" aria-labelledby="pubs-h">
+    <h2 id="pubs-h">Publication</h2>
+    <article class="paper prose">
+      <h3>
+        <a href="https://doi.org/10.1109/FG59268.2024.10581873">BTVSL: A Novel Sentence-Level Annotated Dataset for Bangla Sign Language Translation</a>
+      </h3>
+      <p class="paper-authors"><strong>Iftekhar E Mahbub Zeeon</strong>, Mir Mahathir Mohammad, Muhammad Abdullah Adnan</p>
+      <p class="paper-venue">
+        2024 IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG), Istanbul, May 2024, pages 1–10.
+      </p>
+      <ul class="project-links">
+        <li><a href="https://ieeexplore.ieee.org/document/10581873">IEEE Xplore</a></li>
+        <li><a href="https://doi.org/10.1109/FG59268.2024.10581873">DOI</a></li>
+        <li><a href="https://www.semanticscholar.org/paper/6105c8371868e79251b832e3ff2ca8c5e62d4de2">Semantic Scholar</a></li>
+      </ul>
+
+      <h4>What the paper is about</h4>
+      <p>
+        Sign language is a vital way to communicate for people with hearing impairments, and Bangla Sign Language is
+        widely used in the Bangla-speaking community. Most earlier research could only recognise single signs or
+        words, in controlled settings with small datasets. Translating whole signed sentences into Bangla
+        text was hardly studied, because no large dataset existed for it.
+      </p>
+      <p>
+        We built BTVSL from the BTV news programme "Desh o Jonopoder Khobor", where professional interpreters sign
+        the news. The dataset holds 60 hours of signed news, matched sentence by sentence with Bangla text. When we
+        published it, it was the largest sentence-level dataset for Bangla Sign Language translation.
+      </p>
+      <p>
+        We trained four translation models on BTVSL. They reached an average BLEU score of 20.42. BLEU is a standard
+        score that compares a machine translation with a human one.
+      </p>
+      <p class="quiet">Later Bangla sign language datasets cite BTVSL as earlier work. Semantic Scholar lists 4 citations as of November 2026.</p>
+    </article>
+  </section>
+</Base>

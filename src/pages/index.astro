@@ -22,9 +22,9 @@ const jobs = [
     role: "Software engineer, Dhaka",
     dates: "Nov 2023 – present",
     points: [
-      "Led a team of 11 to ship a multi-tenant SaaS accounting product on Azure for small businesses in Bangladesh, with a tenant-isolated database at 200 TPS.",
+      "Led a team of 11 to ship a SaaS accounting product on Azure for small businesses in Bangladesh. Built the Spring Boot and Kafka services, the multi-tenant database (200 TPS) and the React frontend.",
       "Run production database performance for Farmers Card, the national farmer registry of 1,873,505 farmers.",
-      "Lead the rebuild of a 7,143-screen Oracle ERP on Spring Boot and PostgreSQL.",
+      "Lead the rebuild of a 7,143-screen Oracle ERP in React, Spring Boot and PostgreSQL.",
     ],
   },
   {
@@ -32,7 +32,7 @@ const jobs = [
     role: "Software engineer, contract, Dhaka",
     dates: "May 2026 – Nov 2026",
     points: [
-      "Sole developer. Moved the investor platform from MongoDB to PostgreSQL, and the daily fund accounting for 6 funds from Excel into the app.",
+      "Only developer, frontend and backend: public website, investor portal and staff admin in Next.js, API in Fastify. Moved the platform from MongoDB to PostgreSQL, and the daily fund accounting for 6 funds from Excel into the app.",
     ],
   },
   {
@@ -48,24 +48,40 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
 
 <Base>
   <section class="hero" aria-labelledby="who">
-    <img class="portrait" src="/zeeon.jpg" width="160" height="160" alt="Iftekhar E Mahbub Zeeon" />
-    <div>
+    <div class="bio">
       <h1 id="who">Iftekhar E Mahbub Zeeon</h1>
-      <p class="where">Software engineer in Dhaka, Bangladesh</p>
-      <p class="lede">
-        I build and run systems where a wrong number costs real money: fund accounting, a national farmer
-        registry, and ERP payroll.
+      <p class="where">Full-stack software engineer at Retune AI and Pridesys IT Ltd</p>
+      <p>
+        I am a full-stack software engineer based in Dhaka, Bangladesh. I build web products from end to end:
+        the interface in React and Next.js, the backend in Spring Boot and Node.js, the database in PostgreSQL,
+        and the cloud and Kubernetes setup that runs them.
       </p>
-      <p class="quiet prose">
-        Most of my work is backend and data: PostgreSQL, Spring Boot, TypeScript and Kubernetes. I like problems where
-        the answer can be checked.
+      <p>
+        At <a href="https://retune.so">Retune AI</a>, I build AI products such as retune.so and
+        <a href="https://awaken.is">awaken.is</a>. At Pridesys IT Ltd, I lead the rebuild of a large ERP system
+        and look after the database of <a href="https://krishokcard.gov.bd">Farmers Card</a>, Bangladesh's
+        national farmer registry. From May to November 2026, I was also the only developer of
+        <a href="https://vipbamc.com">VIPB Asset Management</a>'s investor and fund-accounting platform.
       </p>
+      <p>
+        I received my B.Sc. in Computer Science and Engineering from
+        <a href="https://www.buet.ac.bd">BUET</a> in 2024. My undergraduate thesis with Dr. Muhammad Abdullah
+        Adnan introduced <a href="/research/">BTVSL</a>, a Bangla Sign Language dataset, and was published at
+        IEEE FG 2024.
+      </p>
+      <ul class="contact-links">
+        <li><a href="mailto:mahbubzeeon@gmail.com">Email</a></li>
+        <li><a href="https://github.com/iftekharzeeon">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/iftekhar-zeeon">LinkedIn</a></li>
+        <li><a href="https://doi.org/10.1109/FG59268.2024.10581873">Paper</a></li>
+      </ul>
     </div>
+    <img class="portrait" src="/zeeon-portrait.jpg" width="600" height="800" alt="Iftekhar E Mahbub Zeeon" fetchpriority="high" />
   </section>
 
   <div class="ledger">
     <table>
-      <caption>Three checks from 2026. Each line links to the full story.</caption>
+      <caption>Three results from 2026. Each line links to the full story.</caption>
       <thead>
         <tr>
           <th scope="col">What I checked</th>
@@ -195,13 +211,13 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
     position: absolute;
     left: -999px;
   }
-  @media (min-width: 40rem) {
+  @media (min-width: 52rem) {
     .hero {
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: 2rem;
+      grid-template-columns: minmax(0, 1fr) 17rem;
+      gap: 3.5rem;
     }
     .hero .portrait {
-      margin-top: 0.6rem;
+      margin-top: 0.5rem;
     }
   }
 </style>
