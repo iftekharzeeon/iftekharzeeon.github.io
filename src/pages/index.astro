@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
+import { SITE, author } from "../lib/schema";
 
 const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
 const notes = (await getCollection("notes")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
@@ -71,7 +72,7 @@ const projects = [
 const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 ---
 
-<Base>
+<Base description="Iftekhar E Mahbub Zeeon (Zeeon) is a full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd. BUET CSE graduate, architect of Farmers Card, author of BTVSL (IEEE FG 2024)." type="profile" jsonLd={[{ "@type": "ProfilePage", "@id": `${SITE}/#profile`, url: `${SITE}/`, name: "Iftekhar E Mahbub Zeeon", mainEntity: author, about: author }]}>
   <section class="hero" aria-labelledby="who">
     <div class="bio">
       <h1 id="who">Iftekhar E Mahbub Zeeon</h1>
@@ -101,6 +102,7 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
         <li><a href="https://github.com/iftekharzeeon">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/iftekhar-zeeon">LinkedIn</a></li>
         <li><a href="https://doi.org/10.1109/FG59268.2024.10581873">Paper</a></li>
+        <li><a href="/resume.pdf">Résumé (PDF)</a></li>
       </ul>
     </div>
     <img class="portrait" src="/zeeon-portrait.jpg" width="600" height="800" alt="Iftekhar E Mahbub Zeeon" fetchpriority="high" />
@@ -220,6 +222,7 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
       <ul class="contact-links">
         <li><a href="https://github.com/iftekharzeeon">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/iftekhar-zeeon">LinkedIn</a></li>
+        <li><a href="/resume.pdf">Résumé (PDF)</a></li>
       </ul>
     </div>
   </section>

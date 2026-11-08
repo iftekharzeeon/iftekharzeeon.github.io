@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import { SITE, author } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
@@ -15,7 +16,7 @@ const others = all
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Base title={entry.data.title} description={entry.data.summary}>
+<Base title={entry.data.title} description={entry.data.summary} type="article" jsonLd={[{ "@type": "BlogPosting", headline: entry.data.title, description: entry.data.summary, author, datePublished: entry.data.date.toISOString().slice(0, 10), url: `${SITE}/notes/${entry.id}/`, image: `${SITE}/og.png` }]}>
   <a class="back" href="/notes/">All notes</a>
   <header class="article-head">
     <h1>{entry.data.title}</h1>

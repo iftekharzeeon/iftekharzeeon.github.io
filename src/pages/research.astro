@@ -1,8 +1,22 @@
 ---
 import Base from "../layouts/Base.astro";
+import { author } from "../lib/schema";
+const article = {
+  "@type": "ScholarlyArticle",
+  headline: "BTVSL: A Novel Sentence-Level Annotated Dataset for Bangla Sign Language Translation",
+  name: "BTVSL: A Novel Sentence-Level Annotated Dataset for Bangla Sign Language Translation",
+  author: [author, { "@type": "Person", name: "Mir Mahathir Mohammad" }, { "@type": "Person", name: "Muhammad Abdullah Adnan" }],
+  datePublished: "2024-05-27",
+  isPartOf: { "@type": "PublicationEvent", name: "2024 IEEE 18th International Conference on Automatic Face and Gesture Recognition (FG)" },
+  publisher: { "@type": "Organization", name: "IEEE" },
+  pagination: "1-10",
+  identifier: { "@type": "PropertyValue", propertyID: "DOI", value: "10.1109/FG59268.2024.10581873" },
+  sameAs: ["https://doi.org/10.1109/FG59268.2024.10581873", "https://ieeexplore.ieee.org/document/10581873"],
+  about: ["Bangla Sign Language", "Sign language translation", "Dataset"],
+};
 ---
 
-<Base title="Research" description="BTVSL, a sentence-level dataset for Bangla Sign Language translation, published at IEEE FG 2024.">
+<Base title="Research" description="BTVSL, a sentence-level dataset for Bangla Sign Language translation, published at IEEE FG 2024." jsonLd={[article]}>
   <header class="article-head">
     <h1>Research</h1>
     <p class="lede">My research so far is on Bangla Sign Language. It started as my undergraduate thesis at BUET, supervised by Dr. Muhammad Abdullah Adnan.</p>

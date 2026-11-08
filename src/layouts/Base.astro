@@ -4,17 +4,28 @@ import "@fontsource/ibm-plex-sans-condensed/latin-400.css";
 import "@fontsource/ibm-plex-sans-condensed/latin-500.css";
 import "@fontsource/ibm-plex-sans-condensed/latin-600.css";
 import "../styles/global.css";
+import { SITE, person } from "../lib/schema";
 
 interface Props {
   title?: string;
   description?: string;
+  type?: "website" | "article" | "profile";
+  jsonLd?: Record<string, unknown>[];
 }
 
 const site = "Iftekhar E Mahbub Zeeon";
-const { title, description = "Full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd." } = Astro.props;
+const { title, description = "Full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd.", type = "website", jsonLd = [] } = Astro.props;
 const fullTitle = title ? `${title} | ${site}` : `${site}, full-stack software engineer`;
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": `${SITE}/#website`, url: `${SITE}/`, name: site, inLanguage: "en", publisher: { "@id": `${SITE}/#person` } },
+    person,
+    ...jsonLd,
+  ],
+};
 const nav = [
   { href: "/#work", label: "Work" },
   { href: "/#experience", label: "Experience" },
@@ -34,12 +45,22 @@ const nav = [
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
+    <meta name="author" content="Iftekhar E Mahbub Zeeon" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Iftekhar E Mahbub Zeeon, full-stack software engineer" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
     <meta name="theme-color" content="#f2f4ef" />
     <script is:inline>
       try {

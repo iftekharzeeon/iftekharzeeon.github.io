@@ -1,0 +1,37 @@
+# Iftekhar E Mahbub Zeeon
+
+> Full-stack software engineer in Dhaka, Bangladesh. Software engineer at Retune AI (since September 2023), where he is building re:frame, and at Pridesys IT Ltd (since November 2023), where he architected Farmers Card, Bangladesh's national farmer registry. B.Sc. in Computer Science and Engineering from BUET (2024). Author of BTVSL, a Bangla Sign Language dataset published at IEEE FG 2024. Also known as Zeeon or Iftekhar Zeeon.
+
+## About
+
+- [Home](https://iftekharzeeon.github.io/): bio, selected work, experience, projects, research and education
+- [Résumé (PDF)](https://iftekharzeeon.github.io/resume.pdf)
+- [Education and awards](https://iftekharzeeon.github.io/education/): BUET, Notre Dame College, Government Laboratory High School; BASIS National ICT Award 2020 winner
+- [What he is doing now](https://iftekharzeeon.github.io/now/)
+
+## Case studies
+
+- [From manual spreadsheets to a scalable fund platform](https://iftekharzeeon.github.io/work/vipb-fund-accounting/): VIPB Asset Management, sole developer, customer and admin portals, 6 mutual funds moved off Excel
+- [Farmers Card, a national farmer registry](https://iftekharzeeon.github.io/work/farmers-card-database/): architect, 2.5M+ farmers, 4 mobile apps, Spring Boot, Kafka, PostgreSQL, Kubernetes
+- [Rebuilding a 7,143-screen ERP by replaying its history](https://iftekharzeeon.github.io/work/pridesys-erp-rebuild/): Pridesys ERP, Oracle to PostgreSQL, React and Spring Boot
+- [AI products, and a production rescue](https://iftekharzeeon.github.io/work/retune-ai-products/): Retune AI, re:frame, retune.so hybrid search, awaken.is
+
+## Research
+
+- [BTVSL: A Novel Sentence-Level Annotated Dataset for Bangla Sign Language Translation](https://iftekharzeeon.github.io/research/): IEEE FG 2024, DOI 10.1109/FG59268.2024.10581873
+
+## Projects
+
+- [All projects with links](https://iftekharzeeon.github.io/projects/)
+
+## Notes
+
+- [An OR across two tables cost 46 seconds. UNION cost 57 ms.](https://iftekharzeeon.github.io/notes/or-across-tables/)
+- [LIMIT and OFFSET with a non-unique sort key silently drop rows](https://iftekharzeeon.github.io/notes/limit-offset-drops-rows/)
+- [When PostgreSQL's JIT costs more than the query](https://iftekharzeeon.github.io/notes/jit-costs-more-than-the-query/)
+
+## Contact
+
+- Email: mahbubzeeon@gmail.com
+- GitHub: https://github.com/iftekharzeeon
+- LinkedIn: https://www.linkedin.com/in/iftekhar-zeeon

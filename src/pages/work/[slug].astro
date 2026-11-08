@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import Proof from "../../components/Proof.astro";
+import { SITE, author } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const work = await getCollection("work");
@@ -13,7 +14,7 @@ const { Content } = await render(entry);
 const d = entry.data;
 ---
 
-<Base title={d.title} description={d.summary}>
+<Base title={d.title} description={d.summary} type="article" jsonLd={[{ "@type": "Article", headline: d.title, description: d.summary, author, url: `${SITE}/work/${entry.id}/`, image: `${SITE}/og.png`, about: d.org, keywords: d.stack.join(", ") }]}>
   <a class="back" href="/#work">All work</a>
   <header class="article-head">
     <h1>{d.title}</h1>
