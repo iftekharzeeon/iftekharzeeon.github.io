@@ -14,7 +14,7 @@ interface Props {
 }
 
 const site = "Iftekhar E Mahbub Zeeon";
-const { title, description = "Full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd.", type = "website", jsonLd = [] } = Astro.props;
+const { title, description = "Full-stack software engineer at Retune AI Inc in Dhaka, Bangladesh.", type = "website", jsonLd = [] } = Astro.props;
 const fullTitle = title ? `${title} | ${site}` : `${site}, full-stack software engineer`;
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonical = new URL(Astro.url.pathname, Astro.site);

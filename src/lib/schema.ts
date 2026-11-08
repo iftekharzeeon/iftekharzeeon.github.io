@@ -10,11 +10,8 @@ export const person = {
   email: "mailto:mahbubzeeon@gmail.com",
   jobTitle: "Full-Stack Software Engineer",
   description:
-    "Full-stack software engineer in Dhaka, Bangladesh, at Retune AI and Pridesys IT Ltd. Architect of Farmers Card, Bangladesh's national farmer registry. B.Sc. in CSE from BUET.",
-  worksFor: [
-    { "@type": "Organization", name: "Retune AI Inc", url: "https://retune.so" },
-    { "@type": "Organization", name: "Pridesys IT Ltd" },
-  ],
+    "Full-stack software engineer at Retune AI Inc in Dhaka, Bangladesh. Architect of Farmers Card, Bangladesh's national farmer registry. B.Sc. in CSE from BUET.",
+  worksFor: { "@type": "Organization", name: "Retune AI Inc", url: "https://retune.so" },
   alumniOf: [
     { "@type": "CollegeOrUniversity", name: "Bangladesh University of Engineering and Technology", alternateName: "BUET", url: "https://www.buet.ac.bd" },
     { "@type": "EducationalOrganization", name: "Notre Dame College, Dhaka", url: "https://www.ndc.edu.bd" },
