@@ -1,0 +1,118 @@
+---
+import Base from "../layouts/Base.astro";
+
+const schools = [
+  {
+    name: "Bangladesh University of Engineering and Technology (BUET)",
+    href: "https://www.buet.ac.bd",
+    degree: "B.Sc. in Computer Science and Engineering",
+    dates: "2019 – 2024",
+    details: [
+      "GPA 3.63 of 4.00.",
+      "Dean's List Award for academic excellence in the second year.",
+      "Undergraduate thesis supervised by Dr. Muhammad Abdullah Adnan, published at IEEE FG 2024.",
+    ],
+    thesis: true,
+  },
+  {
+    name: "Notre Dame College, Dhaka",
+    href: "https://www.ndc.edu.bd",
+    degree: "Higher Secondary Certificate (HSC)",
+    dates: "",
+    details: [],
+    thesis: false,
+  },
+  {
+    name: "Government Laboratory High School, Dhaka",
+    href: "",
+    degree: "Secondary School Certificate (SSC)",
+    dates: "",
+    details: [],
+    thesis: false,
+  },
+];
+
+const awards = [
+  {
+    result: "Winner",
+    name: "BASIS National ICT Award",
+    year: "2020",
+    detail: "Tertiary student project category.",
+    link: null,
+  },
+  {
+    result: "First runner-up",
+    name: "BUET CSE Fest Hackathon",
+    year: "2022",
+    detail: "API and Cloud category, with HocusPocus Home Assistant, built on Node.js and a speech-to-text API.",
+    link: { label: "Project code", href: "https://github.com/iftekharzeeon/HocusPocusHomeAssistant" },
+  },
+  {
+    result: "Finalist, top 10 of 500+ teams",
+    name: "Therap Java Fest",
+    year: "2022",
+    detail: "Built on Spring Boot, MySQL, JSP and JavaScript.",
+    link: null,
+  },
+  {
+    result: "Dean's List",
+    name: "BUET",
+    year: "Second year",
+    detail: "Award for academic excellence.",
+    link: null,
+  },
+];
+---
+
+<Base title="Education and awards" description="Education, awards and leadership of Iftekhar E Mahbub Zeeon.">
+  <header class="article-head">
+    <h1>Education and awards</h1>
+  </header>
+
+  <section class="section" aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <ol class="schools">
+      {schools.map((s) => (
+        <li class="school">
+          <h3 class="school-name">{s.href ? <a href={s.href}>{s.name}</a> : s.name}</h3>
+          <p class="school-degree">
+            {s.degree}
+            {s.dates && <span class="school-dates">{s.dates}</span>}
+          </p>
+          {s.details.length > 0 && (
+            <ul>
+              {s.details.map((d) => <li>{d}</li>)}
+            </ul>
+          )}
+          {s.thesis && <p class="project-links"><a href="/research/">About the thesis paper</a></p>}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="awards-h">
+    <h2 id="awards-h">Awards</h2>
+    <ul class="awards">
+      {awards.map((a) => (
+        <li class="award">
+          <p class="award-result">{a.result}</p>
+          <h3 class="award-name">{a.name} <span class="award-year">{a.year}</span></h3>
+          <p class="quiet">{a.detail}</p>
+          {a.link && <p class="project-links"><a href={a.link.href}>{a.link.label}</a></p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="lead-h">
+    <h2 id="lead-h">Leadership</h2>
+    <div class="prose">
+      <h3 class="school-name" style="font-size: 1.35rem;">IEEE Computer Society, BUET Student Branch Chapter</h3>
+      <p class="school-degree">Vice Chairperson (Technical) <span class="school-dates">Jun 2023 – Jun 2024</span></p>
+      <p>
+        I organised one seminar, "Bug fixing at scale: using SAST tools in open-source software projects", and two
+        inter-university competitions: a Game Jam and a Capture the Flag.
+      </p>
+    </div>
+  </section>
+</Base>

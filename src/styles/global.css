@@ -809,3 +809,100 @@ p {
   font-family: var(--figures);
   font-size: 0.98rem;
 }
+
+/* Education and awards */
+
+.schools {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.school {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.school:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.school-name {
+  font-size: clamp(1.4rem, 1.15rem + 1vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.school-name a {
+  color: var(--ink);
+  text-decoration-color: var(--rule-strong);
+}
+
+.school-degree {
+  font-family: var(--figures);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin: 0.5rem 0 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.school-dates {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.school ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.awards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 44rem) {
+  .awards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+}
+
+.award {
+  border-top: 2px solid var(--ink);
+  padding-top: 0.9rem;
+}
+
+.award-result {
+  font-family: var(--figures);
+  font-weight: 600;
+  font-size: 1.45rem;
+  color: var(--tick);
+  margin: 0 0 0.2rem;
+  line-height: 1.2;
+}
+
+.award-name {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.award-year {
+  font-family: var(--figures);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+.award p.quiet {
+  font-size: 1rem;
+  margin: 0;
+}
