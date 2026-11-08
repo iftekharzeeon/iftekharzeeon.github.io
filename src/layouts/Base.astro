@@ -17,10 +17,10 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const nav = [
   { href: "/#work", label: "Work" },
-  { href: "/projects/", label: "Projects" },
-  { href: "/research/", label: "Research" },
   { href: "/#experience", label: "Experience" },
-  { href: "/notes/", label: "Notes" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#research", label: "Research" },
+  { href: "/#notes", label: "Notes" },
 ];
 ---
 
@@ -39,8 +39,7 @@ const nav = [
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL("/og.png", Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#f2f4ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#151b20" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f2f4ef" />
     <script is:inline>
       try {
         const saved = localStorage.getItem("theme");
@@ -76,9 +75,7 @@ const nav = [
         const btn = document.querySelector(".theme-toggle");
         if (!btn) return;
         const root = document.documentElement;
-        const current = () =>
-          root.dataset.theme ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const current = () => (root.dataset.theme === "dark" ? "dark" : "light");
         const label = () => {
           const next = current() === "dark" ? "light" : "dark";
           btn.textContent = next === "dark" ? "Dark" : "Light";

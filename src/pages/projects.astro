@@ -6,6 +6,13 @@ type Project = { name: string; what: string; role: string; stack: string[]; link
 
 const work: Project[] = [
   {
+    name: "re:frame",
+    what: "A platform where people and AI agents write apps that run as soon as the code is saved. There is no build step and no deploy step, and every version of the code and data is kept.",
+    role: "I am building it at Retune.",
+    stack: ["Deno", "TypeScript", "Rust"],
+    links: [{ label: "Website", href: "https://reframe.so" }],
+  },
+  {
     name: "retune.so",
     what: "Lets businesses build AI chatbots on their own documents.",
     role: "I built the embedding pipeline and the hybrid BM25 and vector search. Retrieval improved by 40%.",
@@ -28,8 +35,8 @@ const work: Project[] = [
   },
   {
     name: "VIPB Asset Management platform",
-    what: "Public website, investor portal, staff admin and fund accounting for 6 mutual funds.",
-    role: "Only developer. I moved it from MongoDB to PostgreSQL and moved the fund accounting from Excel into the app.",
+    what: "Replaced an asset manager's manual Excel work with one system: public website, investor portal, staff admin and fund accounting for 6 mutual funds.",
+    role: "Only developer, frontend and backend.",
     stack: ["Next.js", "Fastify", "Prisma", "PostgreSQL", "Cloudflare"],
     links: [
       { label: "Live site", href: "https://vipbamc.com" },
@@ -38,9 +45,9 @@ const work: Project[] = [
   },
   {
     name: "Farmers Card",
-    what: "Bangladesh's national farmer registry, run by the Department of Agricultural Extension. 1,873,505 active farmers.",
-    role: "Production operations and database performance, at Pridesys IT Ltd.",
-    stack: ["Spring Boot", "Kafka", "PostgreSQL", "Kubernetes"],
+    what: "Bangladesh's national farmer registry, run by the Department of Agricultural Extension. It serves 2.5M+ farmers through 4 mobile apps and a web back office.",
+    role: "I architected the whole system and built most of the identity and platform services, at Pridesys IT Ltd.",
+    stack: ["Spring Boot", "Kafka", "PostgreSQL", "Kubernetes", "React", "Flutter"],
     links: [
       { label: "Live site", href: "https://krishokcard.gov.bd" },
       { label: "Case study", href: "/work/farmers-card-database/" },
@@ -72,7 +79,7 @@ const work: Project[] = [
     what: "Candidates report the stages of their job applications, so others can see how each company hires.",
     role: "I built it and moved it out of Grow Your Career into its own app.",
     stack: ["Next.js", "PostgreSQL", "Railway"],
-    links: [{ label: "Live site", href: "https://porjay-production.up.railway.app" }],
+    links: [{ label: "Live site", href: "https://porjay.com" }],
   },
   {
     name: "WoahCab",
@@ -91,20 +98,8 @@ const work: Project[] = [
       { label: "Case study", href: "/work/retune-ai-products/" },
     ],
   },
-  {
-    name: "GRM–IBM chat support system",
-    what: "A demo of grievance handling and chat support for the Ministry of Agriculture's e-Voucher pilot.",
-    role: "I took it over from a Replit export, moved its database to Supabase and rebuilt the showcase projects.",
-    stack: ["Node.js", "Express", "PostgreSQL", "Supabase", "Render"],
-    links: [{ label: "Live demo", href: "https://grm-ibm-web.onrender.com" }],
-  },
-  {
-    name: "Amar Shop",
-    what: "An online shop with SSLCommerz payments.",
-    role: "Personal project.",
-    stack: ["React", "TypeScript", "Supabase", "SSLCommerz"],
-    links: [{ label: "Code", href: "https://github.com/iftekharzeeon/amarshop" }],
-  },
+
+
 ];
 
 const student: Project[] = [

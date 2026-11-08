@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
-import Tick from "../components/Tick.astro";
 
 const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.order);
 const notes = (await getCollection("notes")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
@@ -12,6 +11,7 @@ const jobs = [
     role: "Software engineer, remote (USA)",
     dates: "Sep 2023 – present",
     points: [
+      "Building re:frame, a platform where people and AI agents write apps that run as soon as the code is saved.",
       "Built the hybrid BM25 and vector search behind retune.so. Retrieval improved by 40%, and the product made USD 700K+ in its first 2 months on AppSumo.",
       "Built awaken.is, an AI coaching product with 78% retention across 500+ users, and the AlterCall Virtual Coach.",
       "Run production and security for TELE's multilingual WordPress site on GCP. Built a Microsoft Graph tool that turned 2,495 emails into 120 tracked actions.",
@@ -23,7 +23,7 @@ const jobs = [
     dates: "Nov 2023 – present",
     points: [
       "Led a team of 11 to ship a SaaS accounting product on Azure for small businesses in Bangladesh. Built the Spring Boot and Kafka services, the multi-tenant database (200 TPS) and the React frontend.",
-      "Run production database performance for Farmers Card, the national farmer registry of 1,873,505 farmers.",
+      "Architected Farmers Card, the national farmer registry for 2.5M+ farmers, which connects 4 mobile apps and a web back office. Built most of its identity and platform services.",
       "Lead the rebuild of a 7,143-screen Oracle ERP in React, Spring Boot and PostgreSQL.",
     ],
   },
@@ -32,7 +32,8 @@ const jobs = [
     role: "Software engineer, contract, Dhaka",
     dates: "May 2026 – Nov 2026",
     points: [
-      "Only developer, frontend and backend: public website, investor portal and staff admin in Next.js, API in Fastify. Moved the platform from MongoDB to PostgreSQL, and the daily fund accounting for 6 funds from Excel into the app.",
+      "Replaced the company's manual Excel work with one scalable system, and moved all 6 mutual funds onto it.",
+      "Only developer, frontend and backend: public website, investor portal and staff admin in Next.js, API in Fastify, data in PostgreSQL.",
     ],
   },
   {
@@ -40,6 +41,29 @@ const jobs = [
     role: "Junior software engineer, remote",
     dates: "Sep 2020 – Sep 2021",
     points: ["Built the SSLCommerz payment gateway, which handled 300+ requests a day, and the site's REST API."],
+  },
+];
+
+const projects = [
+  {
+    name: "re:frame",
+    what: "A platform where people and AI agents write apps that run as soon as the code is saved.",
+    links: [{ label: "Website", href: "https://reframe.so" }],
+  },
+  {
+    name: "retune.so",
+    what: "Lets businesses build AI chatbots on their own documents. I built its hybrid search.",
+    links: [{ label: "Live site", href: "https://retune.so" }],
+  },
+  {
+    name: "Grow Your Career",
+    what: "A career platform for students in Bangladesh, with AI résumé scoring and mentorship.",
+    links: [{ label: "Live site", href: "https://gycplatform.com" }],
+  },
+  {
+    name: "Porjay",
+    what: "Candidates report the stages of their job applications, so others can see how each company hires.",
+    links: [{ label: "Live site", href: "https://porjay.com" }],
   },
 ];
 
@@ -57,16 +81,18 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
         and the cloud and Kubernetes setup that runs them.
       </p>
       <p>
-        At <a href="https://retune.so">Retune AI</a>, I build AI products such as retune.so and
-        <a href="https://awaken.is">awaken.is</a>. At Pridesys IT Ltd, I lead the rebuild of a large ERP system
-        and look after the database of <a href="https://krishokcard.gov.bd">Farmers Card</a>, Bangladesh's
-        national farmer registry. From May to November 2026, I was also the only developer of
-        <a href="https://vipbamc.com">VIPB Asset Management</a>'s investor and fund-accounting platform.
+        At <a href="https://retune.so">Retune AI</a>, I am building <a href="https://reframe.so">re:frame</a>, a
+        platform where apps run as soon as the code is saved. Before that I built AI products such as retune.so and
+        <a href="https://awaken.is">awaken.is</a>. At Pridesys IT Ltd, I architected
+        <a href="https://krishokcard.gov.bd">Farmers Card</a>, Bangladesh's national farmer registry for 2.5M+
+        farmers, and I lead the rebuild of a large ERP system. From May to November 2026, I also moved
+        <a href="https://vipbamc.com">VIPB Asset Management</a>'s manual spreadsheet work into a scalable system, as
+        its only developer.
       </p>
       <p>
         I received my B.Sc. in Computer Science and Engineering from
-        <a href="https://www.buet.ac.bd">BUET</a> in 2024. My undergraduate thesis with Dr. Muhammad Abdullah
-        Adnan introduced <a href="/research/">BTVSL</a>, a Bangla Sign Language dataset, and was published at
+        <a href="https://www.buet.ac.bd">BUET</a> in 2024. My undergraduate thesis, supervised by Dr. Muhammad
+        Abdullah Adnan, introduced <a href="/research/">BTVSL</a>, a Bangla Sign Language dataset, and was published at
         IEEE FG 2024.
       </p>
       <ul class="contact-links">
@@ -78,40 +104,6 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
     </div>
     <img class="portrait" src="/zeeon-portrait.jpg" width="600" height="800" alt="Iftekhar E Mahbub Zeeon" fetchpriority="high" />
   </section>
-
-  <div class="ledger">
-    <table>
-      <caption>Three results from 2026. Each line links to the full story.</caption>
-      <thead>
-        <tr>
-          <th scope="col">What I checked</th>
-          <th scope="col" class="num">Against</th>
-          <th scope="col" class="num">My result</th>
-          <th scope="col"><span class="skip-label">Outcome</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"><a href="/work/vipb-fund-accounting/">Growth Fund NAV per unit, 28 Sep</a></th>
-          <td class="num" data-label="Against">13.094528</td>
-          <td class="num after" data-label="My result">13.094301</td>
-          <td class="check"><Tick />Both publish as 13.09</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="/work/farmers-card-database/">Slowest farmer-registry update</a></th>
-          <td class="num before" data-label="Against">60,668 ms</td>
-          <td class="num after" data-label="My result">1.7 ms</td>
-          <td class="check"><Tick />On production, 30 Sep</td>
-        </tr>
-        <tr>
-          <th scope="row"><a href="/work/pridesys-erp-rebuild/">ERP attendance replay, rows</a></th>
-          <td class="num" data-label="Against">7,781,353</td>
-          <td class="num after" data-label="My result">7,781,343</td>
-          <td class="check"><Tick />The other 10 explained</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
   <section class="section" id="work" aria-labelledby="work-h">
     <h2 id="work-h">Selected work</h2>
@@ -155,6 +147,39 @@ const fmt = (d: Date) => d.toLocaleDateString("en-GB", { day: "numeric", month: 
         </li>
       ))}
     </ol>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="proj-h">
+    <h2 id="proj-h">Projects</h2>
+    <div>
+      <ul class="project-list">
+        {projects.map((p) => (
+          <li class="project">
+            <h3>{p.name}</h3>
+            <p>{p.what}</p>
+            <ul class="project-links">
+              {p.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top: 1.5rem;"><a href="/projects/">All projects, with links</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="res-h">
+    <h2 id="res-h">Research</h2>
+    <div class="prose">
+      <p>
+        <a href="/research/">BTVSL: A Novel Sentence-Level Annotated Dataset for Bangla Sign Language Translation</a>.
+        IEEE FG 2024.
+      </p>
+      <p class="quiet">
+        A dataset of 60 hours of signed Bangla news, matched sentence by sentence with text. My undergraduate thesis,
+        supervised by Dr. Muhammad Abdullah Adnan.
+      </p>
+      <p><a href="/research/">About the paper</a></p>
+    </div>
   </section>
 
   <section class="section" id="notes" aria-labelledby="notes-h">

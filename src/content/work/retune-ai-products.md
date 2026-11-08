@@ -4,8 +4,8 @@ order: 4
 org: Retune AI Inc
 role: Software engineer, remote
 period: Sep 2023 – present
-stack: [Next.js, TypeScript, Pinecone, OpenAI, Prisma, MySQL, GCP, WordPress]
-summary: At Retune I build AI products and keep client systems running. Hybrid search lifted retrieval by 40% in the chatbot product. On a client's website I recovered a production outage without changing a single row.
+stack: [Deno, TypeScript, Next.js, Pinecone, OpenAI, Prisma, MySQL, GCP, WordPress]
+summary: At Retune I am building re:frame, and before that I built AI products. I also keep client systems running. Hybrid search lifted retrieval by 40% in the chatbot product. On a client's website I recovered a production outage without changing a single row.
 proof:
   kind: single
   label: Retrieval quality, hybrid search against vector search alone
@@ -17,6 +17,10 @@ measured:
   - "Outage: MariaDB process list, Apache access log and load average on the production VM, 14 September 2026."
   - "Mail analysis: 2,495 received messages in 2,130 conversations, read through Microsoft Graph."
 ---
+
+## re:frame
+
+I am now building [re:frame](https://reframe.so), a platform where people and AI agents write apps that run as soon as the code is saved. There is no build step and no deploy step. Each user can run a different version of an app, and every version of the code and data is kept.
 
 ## Hybrid search for retune.so
 
