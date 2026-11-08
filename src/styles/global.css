@@ -674,6 +674,10 @@ p {
   margin-bottom: 0.4rem;
 }
 
+.margin-notes p {
+  margin: 0;
+}
+
 .proof-block {
   border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--rule-strong);

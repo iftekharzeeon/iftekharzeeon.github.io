@@ -30,6 +30,7 @@ const notes = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     summary: z.string(),
+    related: z.object({ title: z.string(), href: z.string() }).optional(),
   }),
 });
 

@@ -2,6 +2,9 @@
 title: An OR across two tables cost 46 seconds. UNION cost 57 ms.
 date: 2026-07-31
 summary: PostgreSQL can combine indexes for an OR on one table. Add a branch that reads a second table, plus ORDER BY and LIMIT, and the planner walks the whole table in sort order.
+related:
+  title: "A national farmer registry under load"
+  href: "/work/farmers-card-database/"
 ---
 
 PostgreSQL can combine several indexes on **the same table** with a `BitmapOr`. When one branch of the `OR` reads a **different** table, through a subquery or a join, the whole `OR` can no longer use indexes as a unit.

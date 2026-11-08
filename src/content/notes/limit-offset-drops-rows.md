@@ -2,6 +2,9 @@
 title: LIMIT and OFFSET with a non-unique sort key silently drop rows
 date: 2026-08-05
 summary: A paged export returned full pages and the right page count, and still lost 16% of the rows. The sort key had ties.
+related:
+  title: "From spreadsheets to a fund-accounting system"
+  href: "/work/vipb-fund-accounting/"
 ---
 
 A paged export is complete only if its sort order is **total**: no two rows may tie.

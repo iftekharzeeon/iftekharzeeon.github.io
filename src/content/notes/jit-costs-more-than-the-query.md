@@ -2,6 +2,9 @@
 title: When PostgreSQL's JIT costs more than the query
 date: 2026-09-14
 summary: On a 64-partition table, PostgreSQL compiled 829 functions for one query and spent 1.7 seconds on it. With JIT off, the page went from 1,562 ms to 496 ms, with no new index.
+related:
+  title: "A national farmer registry under load"
+  href: "/work/farmers-card-database/"
 ---
 
 A query over a table of 1.68 million rows in 64 partitions took 3,514 ms on its first run. The scans were not the cost:
